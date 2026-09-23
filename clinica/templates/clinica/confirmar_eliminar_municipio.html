@@ -1,0 +1,13 @@
+{% extends "clinica/base.html" %}
+
+{% block title %}Confirmar Eliminación de Municipio{% endblock %}
+
+{% block content %}
+    <h1>Confirmar Eliminación de Municipio</h1>
+    <p>¿Estás seguro de que quieres eliminar el municipio "{{ municipio.nombre }}"?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="button_eliminar">Sí, Eliminar</button>
+    </form>
+    <a href="{% url 'municipio_list' %}" class="button_cancelar">No, Cancelar</a>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends "clinica/base.html" %}
+
+{% block title %}Confirmar Eliminación de Historial{% endblock %}
+
+{% block content %}
+    <h1>Confirmar Eliminación de Historial</h1>
+    <p>¿Estás seguro de que deseas eliminar el historial del paciente {{ historial.paciente }} con diagnóstico {{ historial.diagnostico }}?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="button_eliminar">Eliminar</button>
+    </form>
+    <a href="{% url 'historial_list' %}" class="button_cancelar">Cancelar</a>
+{% endblock %}

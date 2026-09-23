@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>{% block title %}Clinica{% endblock %}</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <style>
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+                font-family: Arial, sans-serif;
+            }
+            nav {
+                background-color: #8ac64b;
+                padding: 10px;
+                border-radius: 5px;
+                text-align: center;
+                font-size: 30px;
+            }
+            nav ul {
+                list-style-type: none;
+            }
+            nav ul li a{
+                color: white;
+                text-decoration: none;
+                padding: 10px 20px;
+                display: inline-block;
+            }
+            nav ul li a:hover {
+                color: #000000;
+            }
+            h1 {
+                text-align: center;
+                margin: 20px 0;
+            }
+            table {
+                width: 97%;
+                border-collapse: collapse;
+                margin: 20px 20px;
+                text-align: center;
+            }
+            th, td {
+                border: 1px solid #ddd;
+                padding: 8px;
+                text-align: left;
+            }
+            .button{
+                text-decoration: none;
+                color: #333;
+                font-weight: bold;
+                padding: 10px 20px;
+                background-color: #8ac64b; !important;
+                border-radius: 5px;
+                margin: 5px;
+                cursor: pointer;
+            }
+            .button_cancelar{
+                text-decoration: none;
+                color: #333;
+                font-weight: bold;
+                padding: 10px 20px;
+                background-color: #ccc; !important;
+                border-radius: 5px;
+                margin: 5px;
+                text-align: center;
+                cursor: pointer;
+            }
+            .acciones {
+                padding: 20px 0;
+            }
+            .buscador{
+                text-align: center;
+                margin-bottom: 20px;
+            }
+            .buscador input[type="text"] {
+                padding: 8px;
+                width: 300px;
+                border: 1px solid #0e9338;
+                border-radius: 5px;
+            }
+            form {
+                text-align: center;
+                margin-bottom: 20px;
+
+            }
+            form input[type="text"], form input[type="number"], form select, form input[type="date"], form textarea {
+                padding: 8px;
+                width: 300px;
+                border: 1px solid #0e9338;
+                border-radius: 5px;
+
+            }
+            form label{
+                margin-bottom: 5px;
+                font-weight: bold;
+                vertical-align: top;
+            }
+            form p{
+                margin-bottom: 10px;
+            }
+            .messages {
+                list-style-type: none;
+                padding: 10px 0;
+                margin: 20px 0;
+                text-align: center;
+                background-color: #a0c41a;
+            }
+            p{
+                margin-bottom: 10px;
+                text-align: center;
+            }
+            .button_eliminar{
+                text-decoration: none;
+                color: #fff;
+                font-weight: bold;
+                padding: 10px 20px;
+                background-color: #b90202; !important;
+                border-radius: 5px;
+                margin: 5px;
+                cursor: pointer;
+            }
+            .button_eliminar:hover {
+                background-color: #ff0000; !important;
+            }
+        </style>
+    </head>
+    <nav>
+        <ul>
+            <li><a href="{% url 'inicio' %}">Inicio</a></li>
+        </ul>
+    </nav>
+    <body>
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        {% block content %}
+        {% endblock %}
+    </body>
+</html>

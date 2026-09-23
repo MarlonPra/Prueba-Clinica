@@ -1,0 +1,35 @@
+{% extends "clinica/base.html" %}
+
+{% block title %}Diagnósticos{% endblock %}
+
+{% block content %}
+    <h1>Listado de Diagnósticos</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Codigo</th>
+                <th>Nombre</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if diagnosticos %}
+                {% for diagnostico in diagnosticos %}
+                    <tr>
+                        <td>{{ diagnostico.codigo }}</td>
+                        <td>{{ diagnostico.nombre }}</td>
+                        <td class="acciones">
+                            <a href="{% url 'diagnostico_editar' diagnostico.id %}" class="button">Editar</a> |
+                            <a href="{% url 'diagnostico_eliminar' diagnostico.id %}" class="button_cancelar">Eliminar</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="3">No hay diagnósticos registrados.</td>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
+    <a href="{% url 'diagnostico_crear' %}" class="button">Crear nuevo diagnóstico</a>
+{% endblock %}

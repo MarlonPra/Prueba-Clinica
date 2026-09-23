@@ -1,0 +1,13 @@
+{% extends "clinica/base.html" %}
+
+{% block title %}Crear Nuevo Municipio{% endblock %}
+
+{% block content %}
+    <h1>Crear Nuevo Municipio</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="button">Crear Municipio</button>
+    </form>
+    <a href="{% url 'municipio_list' %}" class="button_cancelar">Cancelar</a>
+{% endblock %}

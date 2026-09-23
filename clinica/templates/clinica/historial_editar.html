@@ -1,0 +1,13 @@
+{% extends "clinica/base.html" %}
+
+{% block title %}Editar Historial{% endblock %}
+
+{% block content %}
+    <h1>Editar Historial</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="button">Guardar Cambios</button>
+    </form>
+    <a href="{% url 'historial_list' %}" class="button_cancelar">Volver a la lista de historiales</a>
+{% endblock %}

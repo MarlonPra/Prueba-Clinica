@@ -1,0 +1,35 @@
+{% extends "clinica/base.html" %}
+
+{% block title %}Lista de Municipios{% endblock %}
+
+{% block content %}
+    <h1>Lista de Municipios</h1>
+    <a href="{% url 'municipio_crear' %}" class="button">Crear Nuevo Municipio</a>
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Departamento</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if municipios %}
+                {% for municipio in municipios %}
+                    <tr>
+                        <td>{{ municipio.nombre }}</td>
+                        <td>{{ municipio.departamento }}</td>
+                        <td class="acciones">
+                            <a href="{% url 'municipio_editar' municipio.id %}" class="button">Editar</a> |
+                            <a href="{% url 'municipio_eliminar' municipio.id %}" class="button_cancelar">Eliminar</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="3">No hay municipios disponibles.</td>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
+{% endblock %}

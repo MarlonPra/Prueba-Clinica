@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Clinica</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <style>
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+                font-family: Arial, sans-serif;
+            }
+            .grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 20px;
+                padding: 20px;
+            }
+            .grid-item {
+                background-color: #f0f0f0;
+                padding: 100px;
+                text-align: center;
+                border-radius: 8px;
+                transition: transform 0.2s;
+                grid-column: span 3;
+            }
+            .grid-item:hover {
+                transform: scale(1.05);
+                background-color: #8ac64b;
+            }
+            a{
+                text-decoration: none;
+                color: #333;
+                font-weight: bold;
+            }
+            nav {
+                background-color: #8ac64b;
+                padding: 10px;
+                border-radius: 5px;
+                text-align: center;
+                font-size: 30px;
+            }
+            nav ul {
+                list-style-type: none;
+            }
+            nav ul li a{
+                color: white;
+                text-decoration: none;
+                padding: 10px 20px;
+                display: inline-block;
+            }
+            nav ul li a:hover {
+                color: #000000;
+            }
+            h1 {
+                text-align: center;
+                margin: 20px 0;
+            }
+        </style>
+    </head>
+    <nav>
+        <ul>
+            <li><a href="{% url 'inicio' %}">Inicio</a></li>
+        </ul>
+    </nav>
+    <body>
+        <h1>Bienvenido a la Clinica</h1>
+
+        <div class="grid">
+            <div class="grid-item">
+                <a href="{% url 'paciente_list' %}">Pacientes</a>
+            </div>
+            <div class="grid-item">
+                <a href="{% url 'municipio_list' %}">Municipios</a>
+            </div>
+            <div class="grid-item">
+                <a href="{% url 'diagnostico_list' %}">Diagnósticos</a>
+            </div>
+            <div class="grid-item">
+                <a href="{% url 'historial_list' %}">Historiales</a>
+            </div>
+        </div>
+    </body>
+</html>

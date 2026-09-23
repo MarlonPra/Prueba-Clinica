@@ -1,0 +1,39 @@
+{% extends "clinica/base.html" %}
+
+{% block title %}Pacientes{% endblock %}
+
+{% block content %}
+    <h1>Listado de Pacientes</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Fecha Nacimiento</th>
+                <th>Municipio</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if pacientes %}
+                {% for paciente in pacientes %}
+                    <tr>
+                        <td>{{ paciente.nombre }}</td>
+                        <td>{{ paciente.apellido }}</td>
+                        <td>{{ paciente.fecha_nacimiento }}</td>
+                        <td>{{ paciente.municipio }}</td>
+                        <td class="acciones">
+                            <a href="{% url 'editar_paciente' paciente.id %}" class="button">Editar</a> |
+                            <a href="{% url 'eliminar_paciente' paciente.id %}" class="button_cancelar">Eliminar</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="5">No hay pacientes registrados.</td>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
+    <a href="{% url 'crear_paciente' %}" class="button">Crear nuevo paciente</a>
+{% endblock %}

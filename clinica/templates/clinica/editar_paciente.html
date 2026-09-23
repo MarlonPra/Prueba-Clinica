@@ -1,0 +1,13 @@
+{% extends "clinica/base.html" %}
+
+{% block title %}Editar Paciente{% endblock %}
+
+{% block content %}
+    <h1>Editar Paciente</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="button">Guardar Cambios</button>
+    </form>
+    <a href="{% url 'paciente_list' %}" class="button_cancelar">Volver al listado de pacientes</a>
+{% endblock %}

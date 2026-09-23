@@ -1,0 +1,13 @@
+{% extends "clinica/base.html" %}
+
+{% block title %}Crear Diagnóstico{% endblock %}
+
+{% block content %}
+    <h1>Crear Diagnóstico</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Guardar</button>
+    </form>
+    <a href="{% url 'diagnostico_list' %}">Volver al listado de diagnósticos</a>
+{% endblock %}

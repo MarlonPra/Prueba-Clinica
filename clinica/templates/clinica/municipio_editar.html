@@ -1,0 +1,13 @@
+{% extends "clinica/base.html" %}
+
+{% block title %}Editar Municipio{% endblock %}
+
+{% block content %}
+    <h1>Editar Municipio</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="button">Guardar Cambios</button>
+    </form>
+    <a href="{% url 'municipio_list' %}" class="button_cancelar">Volver al listado de municipios</a>
+{% endblock %}

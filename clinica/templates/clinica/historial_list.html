@@ -1,0 +1,47 @@
+{% extends "clinica/base.html" %}
+
+{% block title %}Listado de Historiales{% endblock %}
+
+{% block content %}
+    <h1>Listado de Historiales</h1>
+    <form method="get" class="buscador">
+        <input type="text" name="q" placeholder="Buscar historial..." value="{{ request.GET.q }}">
+        <button type="submit" class="button">Buscar</button>
+    </form>
+    <table>
+        <thead>
+            <tr>
+                <th>Codigo</th>
+                <th>Diagnóstico</th>
+                <th>Observacion</th>
+                <th>Paciente</th>
+                <th>Municipio</th>
+                <th>Fecha</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if historiales %}
+                {% for historial in historiales %}
+                    <tr>
+                        <td>{{ historial.diagnostico.codigo }}</td>
+                        <td>{{ historial.diagnostico.nombre }}</td>
+                        <td style="white-space: pre-line;">{{ historial.observaciones }}</td>
+                        <td>{{ historial.paciente }}</td>
+                        <td>{{ historial.paciente.municipio }}</td>
+                        <td>{{ historial.fecha }}</td>
+                        <td class="acciones">
+                            <a href="{% url 'historial_editar' historial.id %}" class="button">Editar</a> |
+                            <a href="{% url 'historial_eliminar' historial.id %}" class="button_cancelar">Eliminar</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="4">No hay historiales registrados.</td>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
+    <a href="{% url 'historial_crear' %}" class="button">Crear nuevo historial</a>
+{% endblock %}
